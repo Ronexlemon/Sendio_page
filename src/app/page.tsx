@@ -1,63 +1,93 @@
 import Image from "next/image";
+import sendioLogo from "@/assets/sendio.png";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex min-h-screen items-center justify-center bg-green-50 font-sans">
+      <main className="relative flex w-full max-w-5xl flex-col items-center gap-16 overflow-hidden rounded-3xl bg-white px-10 py-24 shadow-xl sm:px-16">
+
+        {/* Decorative gradient */}
+        <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-green-200 blur-3xl opacity-60" />
+        <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-green-300 blur-3xl opacity-50" />
+
+        {/* Logo */}
+       <div className="flex items-center gap-3">
+      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black text-xl font-bold text-white">
+        <Image src={sendioLogo} alt="Sendio Logo" width={40} height={40} />
+      </div>
+      <span className="text-2xl font-semibold text-green-700">Sendio</span>
+    </div>
+
+        {/* Hero */}
+        <div className="flex flex-col items-center gap-6 text-center">
+          <h1 className="max-w-3xl text-4xl font-bold leading-tight text-zinc-900 sm:text-5xl">
+            The Smart WhatsApp Wallet for{" "}
+            <span className="text-green-600">Instant Crypto Payments</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="max-w-2xl text-lg leading-8 text-zinc-600">
+            Send, receive, and manage crypto directly inside WhatsApp.
+            Powered by Cronos, AI agents, and the x402 protocol.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Features */}
+        <div className="grid gap-6 sm:grid-cols-3">
+          {[
+            { title: "Chat-to-Pay", desc: "Send crypto as easily as sending a message." },
+            { title: "AI-Powered", desc: "Smart agents guide payments & balances." },
+            { title: "Secure & Fast", desc: "Low fees and instant settlement on Cronos." },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-2xl border border-green-100 bg-green-50 p-6 text-center"
+            >
+              <h3 className="mb-2 text-lg font-semibold text-green-700">
+                {item.title}
+              </h3>
+              <p className="text-sm text-zinc-600">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA + QR */}
+        <div className="flex flex-col items-center gap-8 sm:flex-row sm:gap-12">
+
+          {/* Button */}
+          <div className="flex flex-col items-center gap-3">
+            <a
+              href="https://wa.me/254794026363"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-14 items-center justify-center gap-3 rounded-full bg-green-600 px-8 text-lg font-semibold text-white transition hover:bg-green-700"
+            >
+              Connect on WhatsApp
+            </a>
+            <span className="text-sm text-zinc-500">
+              No downloads. Works instantly.
+            </span>
+          </div>
+
+          {/* QR Code */}
+          <div className="flex flex-col items-center gap-3 rounded-2xl border border-green-100 bg-green-50 p-6">
+  <Image
+    src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://wa.me/message/APRT6VTNTA3NO1"
+    alt="Scan to connect with Sendio on WhatsApp"
+    width={160}
+    height={160}
+    className="rounded-xl"
+    unoptimized
+  />
+  <p className="text-sm font-medium text-green-700">
+    Scan to start on WhatsApp
+  </p>
+</div>
+
+        </div>
+
+        {/* Footer */}
+        <div className="pt-8 text-sm text-zinc-400">
+          © {new Date().getFullYear()} Sendio — Chat. Pay. Done.
         </div>
       </main>
     </div>
