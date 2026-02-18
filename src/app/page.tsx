@@ -27,7 +27,7 @@ export default function Home() {
 
           <p className="max-w-2xl text-lg leading-8 text-zinc-600">
             Send, receive, and manage crypto directly inside WhatsApp.
-            Powered by Cronos, AI agents, and the x402 protocol.
+            Powered  AI agents, and the x402 protocol.
           </p>
         </div>
 
